@@ -1,3 +1,9 @@
+"""This script repackages a subset of the DC2 data into a file that
+corresponds to 4 square degrees of objects brighter than i = 28.
+
+The resulting file is ~500 MB which is a useful sizxe in that it is not too big
+but not too small either.
+"""
 import os
 import tqdm
 import numpy as np

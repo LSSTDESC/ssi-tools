@@ -1,0 +1,10 @@
+name: fsi-tools
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - numpy
+  - hexalattice
+  # these are test only
+  - pytest
+  - flake8

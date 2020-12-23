@@ -62,7 +62,7 @@ def make_hexgrid_for_tract(tract_info, spacing_pixels=64, rng=None):
     # cut 2
     wcs = tract_info.getWcs()
     ra, dec = wcs.pixelToSkyArray(v[:, 0], v[:, 1], degrees=True)
-    cvx = tract_info.getOuterBBox()
+    cvx = tract_info.getOuterSkyPolygon()
     msk = np.array([
         cvx.contains(geom.SpherePoint(ra[i], dec[i], geom.degrees).getVector())
         for i in range(len(ra))

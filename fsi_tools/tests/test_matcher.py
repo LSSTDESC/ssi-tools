@@ -61,6 +61,16 @@ def test_matcher_knn_maxrad(k):
             assert np.array_equal(idx[i], i)
 
 
+@pytest.mark.parametrize('k', [1, 2, 3])
+def test_matcher_knn_maxrad_inf(k):
+    ra, dec = _gen_sphere_pts(50, 4543)
+    mch = Matcher(ra, dec)
+    rap, decp = _gen_sphere_pts(50, 443)
+    d, idx = mch.query_knn(rap, decp, distance_upper_bound=1, k=k)
+    assert not np.any(np.isfinite(d))
+    assert np.all(idx == 50)
+
+
 def test_matcher_radius():
     ra, dec = _gen_sphere_pts(50, 4543)
     mch = Matcher(ra, dec)

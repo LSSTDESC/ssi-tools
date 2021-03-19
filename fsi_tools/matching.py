@@ -68,7 +68,8 @@ class Matcher(object):
         x = hp.rotator.dir2vec(ra, dec, lonlat=True).T
         d, idx = self.tree.query(x, k=k, p=2, distance_upper_bound=maxd, **kwargs)
         d /= 2
-        np.arcsin(d, out=d)
+        msk = np.isfinite(d)
+        d[msk] = np.arcsin(d[msk])
         d *= (2/ARCSEC2RAD)
 
         return d, idx

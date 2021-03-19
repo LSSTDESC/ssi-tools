@@ -1,5 +1,6 @@
 import numpy as np
 
+import astshim  # noqa
 import lsst.geom as geom
 
 from hexalattice.hexalattice import create_hex_grid

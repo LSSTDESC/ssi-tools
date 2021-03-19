@@ -1,15 +1,13 @@
 name: fsi-tools
 channels:
-  - https://www.cosmo.bnl.gov/www/beckermr/stackvana/
   - conda-forge
   - defaults
 dependencies:
   - healpy
   - hexalattice
-  - log4cxx==0.10.0
   - numpy
   - scipy
-  - stackvana=2020.40w
+  - stackvana=0
   # these are test only
   - pytest
   - flake8

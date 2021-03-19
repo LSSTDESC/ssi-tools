@@ -1,4 +1,4 @@
-from scipy import cKDTree
+from scipy.spatial import cKDTree
 import healpy as hp
 import numpy as np
 
@@ -101,5 +101,5 @@ class Matcher(object):
         coords = hp.rotator.dir2vec(ra, dec, lonlat=True).T
         tree = cKDTree(coords, balanced_tree=False)
         d = 2.0*np.sin(ARCSEC2RAD * radius/2.0)
-        idx = self.tree.query_ball_tree(tree, d, eps=0.0)
+        idx = self.tree.query_ball_tree(tree, d, eps=eps)
         return idx

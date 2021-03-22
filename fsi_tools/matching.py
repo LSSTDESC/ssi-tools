@@ -162,8 +162,11 @@ def do_balrogesque_matching(
                in `orig_det_cat`.
             3: indicates the object in `fsi_det_cat` did not match to any injected
                object in `fsi_det_cat`
+    match_index : array-like of int
+        Index of the match in the `fsi_truth_cat`. A value of -1 indicates no match.
     """
     match_flag = np.zeros(fsi_det_cat.shape[0], dtype=np.int32)
+    match_index = np.zeros(fsi_det_cat.shape[0], dtype=np.int64) + -1
 
     with Matcher(fsi_truth_cat["ra"], fsi_truth_cat["dec"]) as mch:
         _, idx = mch.query_knn(
@@ -174,6 +177,7 @@ def do_balrogesque_matching(
         )
         msk = idx >= fsi_truth_cat["ra"].shape[0]
         match_flag[msk] = 3
+        match_index[~msk] = idx[~msk]
 
     with Matcher(fsi_det_cat["ra"], fsi_det_cat["dec"]) as mch:
         oidx = mch.query_radius(
@@ -192,4 +196,4 @@ def do_balrogesque_matching(
                 else:
                     match_flag[i] = 1
 
-    return match_flag
+    return match_flag, match_index

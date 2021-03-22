@@ -8,6 +8,7 @@ dependencies:
   - numpy
   - scipy
   - stackvana=0
+  - tqdm
   # these are test only
   - pytest
   - flake8

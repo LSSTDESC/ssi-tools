@@ -3,10 +3,9 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - healpy
   - hexalattice
   - numpy
-  - scipy
+  - spherematch
   - stackvana=0
   - tqdm
   # these are test only

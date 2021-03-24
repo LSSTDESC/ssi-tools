@@ -1,5 +1,7 @@
 import numpy as np
 
+# this import of astshim corrects for a bug in the stack pybind11 shims
+# leave it for a while but remove it eventually
 import astshim  # noqa
 import lsst.geom as geom
 

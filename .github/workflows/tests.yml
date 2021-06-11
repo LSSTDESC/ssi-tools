@@ -29,9 +29,9 @@ jobs:
       - name: lint
         shell: bash -l {0}
         run: |
-          flake8 fsi_tools
+          flake8 ssi_tools
 
       - name: test
         shell: bash -l {0}
         run: |
-          pytest -vvs fsi_tools
+          pytest -vvs ssi_tools
